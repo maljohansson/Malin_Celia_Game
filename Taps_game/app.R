@@ -1,8 +1,10 @@
 # the game so far 
+# Not interactive
 
 
 # get themes
 # install.packages(shinythemes)
+
 library(shinythemes)
 library(ggplot2)  # For creating pretty plots
 library(dplyr)  # For filtering and manipulating data
@@ -97,3 +99,4 @@ ui <- fluidPage(theme = shinytheme("sandstone"),
 shinyApp(ui = ui, server = server)
 
 #?icon
+
