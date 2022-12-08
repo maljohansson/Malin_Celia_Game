@@ -5,22 +5,21 @@
 # get themes
 # install.packages(shinythemes)
 
+# libraries  ----
 library(shinythemes)
 library(ggplot2)  # For creating pretty plots
 library(dplyr)  # For filtering and manipulating data
 library(agridat)  # The package where the data comes from
-
-
-# check what tags you can use
-#names(tags)
-
-
-
 library(shiny)
 
+  
+
+# server ----
 # Define server logic
 server <- function(input, output) {}
 
+
+# ui section ----
 # run this after fluidpage to choose theme
 # themeSelector(),   #pick one and then change to theme = shinytheme("darkly"),
 
@@ -60,8 +59,8 @@ ui <- fluidPage(theme = shinytheme("sandstone"),
                     actionButton(inputId = "action",
                                  label = "Go!",
                                  icon = icon("wheat-awn")),
-            
-               
+                    
+                    
                     
                     actionLink(inputId = "Hello",
                                label = "https://github.com/maljohansson",
@@ -71,32 +70,39 @@ ui <- fluidPage(theme = shinytheme("sandstone"),
                   
                   mainPanel(
                     tabsetPanel(
+                      
+                      # concent form ----
                       tabPanel(tags$b("Consent form"), tags$b("Read all the terms and conditions"),
                                "Input all the text about the concent form here",
+                               
+                               checkboxInput(inputId = "check box", 
+                                             label = "Yes I agree to the terms and conditions", 
+                                             value = 0),
+                               actionButton(inputId = "action",
+                                            label = "Go!",
+                                            icon = icon("seedling"))),
                       
-                      checkboxInput(inputId = "check box", 
-                                    label = "Yes I agree to the terms and conditions", 
-                                    value = 0),
-                      actionButton(inputId = "action",
-                                   label = "Go!",
-                                   icon = icon("seedling"))),
-                    
-                      
+
+                      # instructions ----
+                                            
                       tabPanel(tags$b("Instructions on how to play"), a(hfef="www.r-tutorials.com", "r-tutorials")),
                       
-                      tabPanel(tags$b("The game itself"), tags$blockquote("Farm", cite = "Farm"),
+                    
+                      
+                      # the game ----
+                        tabPanel(tags$b("The game itself"), tags$blockquote("Farm", cite = "Farm"),
                                actionButton("resetGame", "Reset game", class = "butt"),
                                actionButton("newGame", "New game"),
                                actionButton("showScores", "Scores"),
                                
                                
                       )
-                   
-                ))))
+                      
+                    ))))
 
 
 # Run the application 
 shinyApp(ui = ui, server = server)
 
-#?icon
+
 
