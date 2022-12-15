@@ -3,6 +3,8 @@
 # good to make it changing colour 
 
 library(shiny)
+library(shinythemes)
+library(shinyjs)
 
 
 
