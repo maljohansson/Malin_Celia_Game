@@ -1,3 +1,6 @@
+Gamefieldcode
+# The whole game with layout and game
+
 Addcode
 # The whole game with layout and game
 
@@ -5,9 +8,26 @@ Addcode
 # The field, reactive but just with text
 # good to make it changing colour 
 main
+main
 
+
+# get themes
+# install.packages(shinythemes)
+
+# libraries  ----
+library(shinythemes)
+library(ggplot2)  # For creating pretty plots
+library(dplyr)  # For filtering and manipulating data
+library(agridat)  # The package where the data comes from
 library(shiny)
+library(shinyjs)
 
+
+
+Gamefieldcode
+# server
+# Define server logic
+server <- function(input, output) {}
 
 Addcode
 # libraries  
@@ -19,10 +39,18 @@ library(shiny)
 library(shinyjs)
 
 main
+main
 
-ui <- fluidPage(theme = shinytheme("cosmo"),
-                 
+
+# ui section ----
+# run this after fluidpage to choose theme
+# themeSelector(),   #pick one and then change to theme = shinytheme("darkly"),
+
+ui <- fluidPage(theme = shinytheme("sandstone"),
+                titlePanel("Malins app"),
                 
+Gamefieldcode
+
                 #Create a box and change the background colour 
                  wellPanel(style = "background: green",
                            
@@ -45,6 +73,7 @@ server <- function(input, output) {}
 ui <- fluidPage(theme = shinytheme("sandstone"),
                 titlePanel("Malins app"),
                 
+main
                 sidebarLayout(
                   position = "right",
                   sidebarPanel(
@@ -297,6 +326,8 @@ p("The most popular pest control methods contribute to the evolution of pesticid
                       )
                       
                     )))
+Gamefieldcode
+
 
 
 
@@ -410,6 +441,7 @@ There will be a subsidy of Z (eg. discount on biopesticides in the ecological st
                          label = "Choose landscape management", 
                          choices = c("Recommended control", "Biocontrol", "Chemical control", "No control" )),
              
+main
 
   
   mainPanel(
@@ -423,8 +455,7 @@ There will be a subsidy of Z (eg. discount on biopesticides in the ecological st
   disabled(actionButton("resetGame_setup", "Reset game"))
 main
 
-  
-)))
+
 
 server <- function(input, output, session) {
   
@@ -433,6 +464,14 @@ server <- function(input, output, session) {
   })
   
   
+  
+  
+}
+
+
+# Run the application 
+shinyApp(ui = ui, server = server)
+
 
 Addcode
 
@@ -441,4 +480,3 @@ Addcode
 }
 main
 
-shinyApp(ui, server)
