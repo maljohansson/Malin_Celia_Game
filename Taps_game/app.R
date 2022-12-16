@@ -279,6 +279,16 @@ p("The most popular pest control methods contribute to the evolution of pesticid
                       
                     )))
 
+  
+  mainPanel(
+    textOutput("selected_var"),
+  ),
+  
+ # actionButton("resetGame", "Reset game"),
+  actionButton("nextStep", "Next step"),
+  br(),
+  actionButton("runGame", "GO!", icon = icon("gamepad")),
+  disabled(actionButton("resetGame_setup", "Reset game"))
 
 
 
@@ -298,4 +308,6 @@ server <- function(input, output, session) {
 shinyApp(ui = ui, server = server)
 
 
+  
+}
 
